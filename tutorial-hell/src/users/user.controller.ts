@@ -6,6 +6,8 @@ import {
   Delete,
   Param,
   Body,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { UpdateUserDto } from 'src/users/dtos/update-user.dto';
@@ -35,6 +37,7 @@ export class UsersController {
     return `Update user ${updateUserDto.username}`;
   }
 
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':username')
   remove(@Param('username') username: string): string {
     return `removed username ${username}`;
